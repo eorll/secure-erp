@@ -29,7 +29,19 @@ def print_general_results(result, label):
     lists/tuples (like "@label: \n  @item1; @item2"), and dictionaries
     (like "@label \n  @key1: @value1; @key2: @value2")
     """
-    pass
+
+    if type(result) is float or type(result) is int:
+        print(f"{label}: {round(result, 2)}")
+
+    if type(result) is list or type(result) is tuple:
+        print(f'{label}: ')
+        for item in result:
+            print(f'{item}')
+
+    if type(result) is dict:
+        print(f'{label}: ')
+        for key,value in result.items():
+            print(f'{key}: {value}')
 
 
 # /--------------------------------\
@@ -45,7 +57,19 @@ def print_table(table):
     Args:
         table: list of lists - the table to print out
     """
-    pass
+    for i in table:
+        row = ''
+        bar = ''
+        for j in i:
+            row += f'|{j:^7}'
+        row += ' |'
+        for x in range(len(row)):
+            bar += '-'
+        print(bar)
+        print(row)
+    print(bar)
+        
+# print_table([['Jajko',2,3,4,5],[2,2,2245,4,5]])
 
 
 def get_input(label):
@@ -72,4 +96,6 @@ def print_error_message(message):
     Args:
         message: str - the error message
     """
-    pass
+    print(f'Error! {message}')
+
+    
