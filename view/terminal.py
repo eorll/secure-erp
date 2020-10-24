@@ -11,7 +11,11 @@ def print_menu(title, list_options):
         title (str): the title of the menu (first row)
         list_options (list): list of the menu options (listed starting from 1, 0th element goes to the end)
     """
-    pass
+    print(f'{title}')
+    n = 0
+    for option in list_options:
+        print(f"({n}) {option}")
+        n += 1
 
 
 def print_message(message):
@@ -20,7 +24,7 @@ def print_message(message):
     Args:
         message: str - the message
     """
-    pass
+    print(message)
 
 
 def print_general_results(result, label):
@@ -97,5 +101,3 @@ def print_error_message(message):
         message: str - the error message
     """
     print(f'Error! {message}')
-
-    

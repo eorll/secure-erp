@@ -18,7 +18,6 @@ def read_table_from_file(file_name, separator=';'):
     except IOError:
         return []
 
-
 def write_table_to_file(file_name, table, separator=';'):
     """Write tabular data into a CSV file.
 
