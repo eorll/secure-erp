@@ -6,7 +6,7 @@ def list_employees():
     for index, list_employees in enumerate(list_employees, start = 1):
         view.print(index,list_employees)
     #view.print_error_message("Not implemented yet.")
-
+    # jak nie chcemy ponumerowanych usowamy start = 1
 
 def add_employee():
     view.print_error_message("Not implemented yet.")
