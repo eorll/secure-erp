@@ -12,3 +12,5 @@ from model import data_manager, util
 
 DATAFILE = "model/hr/hr.csv"
 HEADERS = ["Id", "Name", "Date of birth", "Department", "Clearance"]
+def list_employees():
+    list_of_employees = {'Alcie','Cecil','Bob'}
