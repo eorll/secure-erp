@@ -3,8 +3,13 @@ from view import terminal as view
 
 
 def list_employees():
-    #for index, list_employees in enumerate(list_employees, start = 1):
-        #view.print(index,list_employees)
+    global list_of_employees
+
+
+for index, list_of_employees in enumerate(list_of_employees, start = 1):
+    
+        print(index,list_of_employees)
+        
     view.print_error_message("Not implemented yet.")
    #not ready yet :)
     
