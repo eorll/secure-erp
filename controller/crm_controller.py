@@ -3,23 +3,31 @@ from view import terminal as view
 
 
 def list_customers():
-    view.print_error_message("Not implemented yet.")
+    #view.print_error_message("Not implemented yet.")
+    view.print_table(crm.list_customers)
+    input("OK")
 
 
 def add_customer():
-    view.print_error_message("Not implemented yet.")
+    #view.print_error_message("Not implemented yet.")
+    add_c = view.get_inputs(crm.HEADERS) #pobieranie danych od użytkownika
+    crm.new_customer(add_c)
+    input("OK")
 
 
 def update_customer():
     view.print_error_message("Not implemented yet.")
+    input("OK")
 
 
 def delete_customer():
     view.print_error_message("Not implemented yet.")
+    input("OK")
 
 
 def get_subscribed_emails():
     view.print_error_message("Not implemented yet.")
+    input("OK")
 
 
 def run_operation(option):

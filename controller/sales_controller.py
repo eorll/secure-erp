@@ -3,8 +3,8 @@ from view import terminal as view
 
 
 def list_transactions():
-    view.print_table(sales.get_list_transaction())
-    
+    view.print_error_message("Not implemented yet.")
+
 
 def add_transaction():
     view.print_error_message("Not implemented yet.")

@@ -13,11 +13,10 @@ def print_menu(title, list_options):
         title (str): the title of the menu (first row)
         list_options (list): list of the menu options (listed starting from 1, 0th element goes to the end)
     """
-    print(f'{title}')
-    n = 0
-    for option in list_options:
-        print(f"({n}) {option}")
-        n += 1
+    print("TITLE: ",title , "\nOPTIONS: ")# , list_options, "\n") #
+    for i in range(len(list_options)):
+        print("\t",i, list_options[i])
+    print("\n")
 
 
 def print_message(message):
@@ -26,7 +25,7 @@ def print_message(message):
     Args:
         message: str - the message
     """
-    print(message)
+    print("MESSAGE:" ,  message, "\n")
 
 
 def print_general_results(result, label):
@@ -35,19 +34,7 @@ def print_general_results(result, label):
     lists/tuples (like "@label: \n  @item1; @item2"), and dictionaries
     (like "@label \n  @key1: @value1; @key2: @value2")
     """
-
-    if type(result) is float or type(result) is int:
-        print(f"{label}: {round(result, 2)}")
-
-    if type(result) is list or type(result) is tuple:
-        print(f'{label}: ')
-        for item in result:
-            print(f'{item}')
-
-    if type(result) is dict:
-        print(f'{label}: ')
-        for key,value in result.items():
-            print(f'{key}: {value}')
+    pass
 
 
 # /--------------------------------\
@@ -63,11 +50,12 @@ def print_table(table):
     Args:
         table: list of lists - the table to print out
     """
+    #print(table)
     for i in table:
         row = ''
         bar = ''
         for j in i:
-            row += f'|{j:^20}'
+            row += f'|{j:^7}'
         row += ' |'
         for x in range(len(row)):
             bar += '-'
@@ -75,7 +63,7 @@ def print_table(table):
         print(row)
     print(bar)
         
-# print_table([['Jajko',2,3,4,5],[2,2,2245,4,5]])
+#print_table([['Jajko',2,3,4,5],[2,2,2245,4,5]])
 
 
 def get_input(label):
@@ -84,11 +72,15 @@ def get_input(label):
     Args:
         label: str - the label before the user prompt
     """
+
     label = "".join(label)
-    print("Current label:"  + label)
-    print("USER ACTION| Enter new label:")
+    print("Current label:"  + label + "\n")
+    print("USER ACTION| Enter number of label:")
     user_input = input(" ") ##
     return user_input
+
+#label = ["Pierwsza Linia 123 2"]
+#get_input(label)
 
 
 def get_inputs(labels):
@@ -97,37 +89,17 @@ def get_inputs(labels):
     Args:
         labels: list - the list of the labels to be displayed before each prompt
     """
-    print("CURRENT LABELS:")
-    #Wyświetlanie aktualnych labels:
-    counter = 1
-    for row in labels:
-        row = "".join(row)
-        print("\t",counter,row)
-        counter+=1
-    print("\n")
-    #Użytkownik wprowadza kolejne, koniec gdy wprowadzi pustą (enter)
-    user_input = " "
-    print("USER ACTION| Enter the labels\n") ##
-    while len(user_input)>0:
-        user_input = input(str(counter)+" ")
-        labels.append(user_input)
-        counter+=1
 
-    labels.remove("") #Usuwa ostatnią (pustą) linie
+    new_line = []
+    
+    for i in range(1,len(labels)):
+        user_input = input("USER ACTION| Enter "+ labels[i]+ " for new user: ")
+        new_line.append(user_input)
 
-    os.system("cls || clear")
+    return new_line
 
-    #Wyświetlanie aktualnych labels:
-    print("All labels:")
-    counter = 1
-    for row in labels:
-        row = "".join(row)
-        print("\t",counter,row)
-        counter+=1
-        
-    print("\n")
-    return labels
-
+#labels = [["Pierwsza Linia 123 2"], ["Druga linia 122 2"]]
+#get_inputs(labels)
 
 def print_error_message(message):
     """Prints an error message to the terminal.
@@ -135,4 +107,4 @@ def print_error_message(message):
     Args:
         message: str - the error message
     """
-    print(f'Error! {message}')
+    print("ERROR MESSAGE:" ,  message, "\n")
