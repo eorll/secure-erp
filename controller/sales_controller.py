@@ -3,11 +3,12 @@ from view import terminal as view
 
 
 def list_transactions():
-    view.print_error_message("Not implemented yet.")
-
+    view.print_table(sales.get_list_transaction())
+    
 
 def add_transaction():
-    view.print_error_message("Not implemented yet.")
+    new_transaction = view.get_inputs(sales.HEADERS)
+    sales.add_transaction(new_transaction)
 
 
 def update_transaction():

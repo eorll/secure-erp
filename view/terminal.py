@@ -1,3 +1,5 @@
+import os
+
 def print_menu(title, list_options):
     """Prints options in standard menu format like this:
 
@@ -65,7 +67,7 @@ def print_table(table):
         row = ''
         bar = ''
         for j in i:
-            row += f'|{j:^7}'
+            row += f'|{j:^20}'
         row += ' |'
         for x in range(len(row)):
             bar += '-'
@@ -82,7 +84,12 @@ def get_input(label):
     Args:
         label: str - the label before the user prompt
     """
-    pass
+    label = "".join(label)
+    print("Current label:"  + label)
+    print("USER ACTION| Enter new label:")
+    user_input = input(" ") ##
+    os.system('cls')
+    return user_input
 
 
 def get_inputs(labels):
@@ -91,7 +98,13 @@ def get_inputs(labels):
     Args:
         labels: list - the list of the labels to be displayed before each prompt
     """
-    pass
+    print("CURRENT LABELS:")
+    inputs_list = []
+    for label in labels:
+        new_item = input(f'Enter {label}: ')
+        inputs_list.append(new_item)
+    os.system('cls')
+    return inputs_list
 
 
 def print_error_message(message):
