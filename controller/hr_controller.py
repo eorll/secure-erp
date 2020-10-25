@@ -3,7 +3,7 @@ from view import terminal as view
 
 
 def list_employees():
-    global list_of_employees
+    employees = hr.get_employees()
 
 
 for index, list_of_employees in enumerate(list_of_employees, start = 1):
