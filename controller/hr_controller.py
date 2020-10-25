@@ -4,11 +4,12 @@ from view import terminal as view
 
 def list_employees():
     employees = hr.get_employees()
+    view.print_table(employees)
 
 
-for index, list_of_employees in enumerate(list_of_employees, start = 1):
+#for index, list_of_employees in enumerate(list_of_employees, start = 1):
     
-        print(index,list_of_employees)
+#       print(index,list_of_employees)
         
     view.print_error_message("Not implemented yet.")
    #not ready yet :)
