@@ -12,6 +12,7 @@ def list_employees():
 #       print(index,list_of_employees)
         
     view.print_error_message("Not implemented yet.")
+    
    #not ready yet :)
     
 
@@ -20,6 +21,13 @@ def add_employee():
 
 
 def update_employee():
+    empl_id = view.get_employee_input("Please, type which employee you wish to update:")
+    employee = hr.get_employees(empl_id)
+    view.print_message("Updating employee:")
+    view.print_table(employee)
+    view.get_input("Please type which employee you wish to update:")
+    
+    
     view.print_error_message("Not implemented yet.")
 
 
