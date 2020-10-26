@@ -16,7 +16,12 @@ def list_employees(employees):
    #not ready yet :)
     
 
-def add_employee():
+def add_employee(add_emploees, new_employee):
+    add_emloyees = view.get_change_input("Please, enter data of the employee you want to add:")
+    new_employee = hr.get_employees(add_employees)
+    view.print.message("Addinig employee:")
+    view.print_table(new_employee)
+    view.get_input("Please, enter data of the employee you want to add:")
     view.print_error_message("Not implemented yet.")
 
 
@@ -31,7 +36,13 @@ def update_employee(empl_id, employee):
     view.print_error_message("Not implemented yet.")
 
 
-def delete_employee():
+def delete_employee(delete_employees, deleted_employee):
+    delete_employees = view.get_input("Please, enter data of an employee to delete ")
+    deleted_employee = hr.get_employees(delete_employees)
+    view.print_message("Deleting employee:")
+    view.print_table(deleted_employee)
+    view.get_input("Please, enter data of an employee to delete ")
+    view.print_error_message("Not implemented yet.")
     view.print_error_message("Not implemented yet.")
 
 
