@@ -2,7 +2,7 @@ from model.hr import hr
 from view import terminal as view
 
 
-def list_employees():
+def list_employees(employees):
     employees = hr.get_employees()
     view.print_table(employees)
 
@@ -20,7 +20,7 @@ def add_employee():
     view.print_error_message("Not implemented yet.")
 
 
-def update_employee():
+def update_employee(empl_id, employee):
     empl_id = view.get_employee_input("Please, type which employee you wish to update:")
     employee = hr.get_employees(empl_id)
     view.print_message("Updating employee:")
