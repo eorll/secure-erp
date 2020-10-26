@@ -43,7 +43,7 @@ def delete_employee(delete_employees, deleted_employee):
     view.print_table(deleted_employee)
     view.get_input("Please, enter data of an employee to delete ")
     view.print_error_message("Not implemented yet.")
-    view.print_error_message("Not implemented yet.")
+    
 
 
 def get_oldest_and_youngest():
@@ -58,7 +58,12 @@ def next_birthdays():
     view.print_error_message("Not implemented yet.")
 
 
-def count_employees_with_clearance():
+def count_employees_with_clearance(empoyees_with_clearance, number):
+    employees_with_clearance = 0
+    number = int(view.get_input("Enter required clearance level"))
+    for i in range(len(hr.get_employees[i])) <= number:
+        employees_with_clearance += 1
+        view.print_general_results(employees_with_clearance, "Number of employees with clearence")
     view.print_error_message("Not implemented yet.")
 
 
