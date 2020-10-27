@@ -15,11 +15,35 @@ HEADERS = ["id", "name", "email", "subscribed"]
 
 
 ###dopisane MatLeg
-list_customers = data_manager.read_table_from_file(DATAFILE, separator=';')
+def read_customers_list(): #odczyt musi być w funkcji aby każdorazowo odczytywał z pliku - bez funkcji odczyta tylko raz na początku programu 
+    list_customers = data_manager.read_table_from_file(DATAFILE, separator=';')
+    return list_customers
+#list_customers = data_manager.read_table_from_file(DATAFILE, separator=';')
 
-def new_customer(new_customer):
+def new_customer(new_customer,option=0):
     newID = util.generate_id() #wygenerowanie ID dla nowego użytkownika
     new_customer.insert(0,newID) #na pierwsze miejscie w liście new_customer przypisuje ID
-    full_list = data_manager.read_table_from_file(DATAFILE, separator=';') #pobranie tego co aktualnie jest w pliku CSV
-    full_list.append(new_customer) #dopisanie nowej lini do pliku CSV
-    data_manager.write_table_to_file(DATAFILE, full_list) #zapis zaktualizowanej listy do pliku CSV
+    list_customers = data_manager.read_table_from_file(DATAFILE, separator=';') #pobranie tego co aktualnie jest w pliku CSV
+    if option==0:
+        list_customers.append(new_customer) #dopisanie nowej lini do pliku CSV
+    
+    elif option > 0: #update
+        #input("Option" + str(option))
+        list_customers[option] = new_customer #nadpisuje dany wiersz npwymi wartościami podanymi przez użytkownika
+        #input("UPDATED!")
+    
+    elif option < 0: #remove, minus oznacza że będziemy usuwac
+        index = abs(option) #zamiana na liczbę dodatnią = odczytanie numeru wiersza do usunięcia
+        #input("Option" + str(option))
+        list_customers.pop(index) #usunięcie wybranego wiersza
+        #input("REMOVED!")
+
+    data_manager.write_table_to_file(DATAFILE, list_customers) #zapis zaktualizowanej listy do pliku CSV
+
+def get_emails():
+    subscribed_emails = []
+    list_customers = data_manager.read_table_from_file(DATAFILE, separator=';') #pobranie tego co aktualnie jest w pliku CSV
+    for customer in list_customers:  #szuka w liście klientów któzy subskrybują i dodaje ich emaile do nowej list
+        if int(customer[3]) > 0:
+            subscribed_emails.append(customer[2]) 
+    return subscribed_emails

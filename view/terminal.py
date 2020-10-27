@@ -51,16 +51,18 @@ def print_table(table):
         table: list of lists - the table to print out
     """
     #print(table)
+    counter = 1
     for i in table:
         row = ''
         bar = ''
         for j in i:
-            row += f'|{j:^7}'
+            row += f'|{j:^5}'
         row += ' |'
         for x in range(len(row)):
             bar += '-'
         print(bar)
-        print(row)
+        print(counter,row)
+        counter+=1
     print(bar)
         
 #print_table([['Jajko',2,3,4,5],[2,2,2245,4,5]])
