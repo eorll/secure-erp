@@ -57,12 +57,24 @@ def print_general_results(result, label):
 # |--------|------------|----------|
 # |   1    | Sidewinder | missile  |
 # \-----------------------------------/
-def print_table(table):
+def print_table(table, labels):
     """Prints tabular data like above.
 
     Args:
         table: list of lists - the table to print out
     """
+    # dodaje nagłówki do tabeli
+    row = ''
+    bar = ''
+    for i in labels:
+        row += f'|{i:^20}'
+    row += ' |'
+    for x in range(len(row)):
+        bar += '-'
+    print(bar)
+    print(row)
+
+    # drukuje tabele
     for i in table:
         row = ''
         bar = ''
@@ -84,10 +96,7 @@ def get_input(label):
     Args:
         label: str - the label before the user prompt
     """
-    label = "".join(label)
-    print("Current label:"  + label)
-    print("USER ACTION| Enter new label:")
-    user_input = input(" ") ##
+    user_input = input(f"Enter {label} ") 
     os.system('cls')
     return user_input
 
