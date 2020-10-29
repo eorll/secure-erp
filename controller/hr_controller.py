@@ -47,6 +47,24 @@ def delete_employee(delete_employees, deleted_employee):
 
 
 def get_oldest_and_youngest():
+    """
+      birth_date = (%Y, %m, %d)
+    birth_date_year = %Y
+    age_of_employess = hr.get_employees(birth_date(birth_date.year))
+    youngest_employee = min(y)
+    oldest_employee = max(y)
+    
+    today = date.today()
+    y = hr.Today_year - birth_date.year
+    if today.month < birth_date.month or today.month == birth_date.month and today.day < birth_date.day:
+        y -= 1
+        view.print_general_results(y)
+        if y = youngest_employee
+        view.print_general_results("Our youngest employee is:", youngest_employee) 
+        if y = oldest_employee
+        view.print_general_results("Our oldest employee is:"oldest_employee )
+        else:
+            pass"""
     view.print_error_message("Not implemented yet.")
 
 
