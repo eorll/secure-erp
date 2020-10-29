@@ -68,6 +68,16 @@ def count_employees_with_clearance(empoyees_with_clearance, number):
 
 
 def count_employees_per_department():
+    employee_department = {"Sales", "Production", "HR"}
+    employee_department = hr.Id_INDEX
+    employee_per_deparment = hr.DATABASE
+    for i in range(len(hr.HR_DATABASE)):
+        if [hr.HR_DATABASE[i][hr.Id_INDEX]]
+        employee_per_deparment[hr.HR_DATABASE[i]][hr.Id_INDEX]] += 1
+        
+        else:
+            employee_per_deparment[hr.HR_DATABASE[i]][hr.Id_INDEX]] = 1
+            view.print_general_results(employees_with_clearance(employee_per_deparment, "Employees per department"))
     view.print_error_message("Not implemented yet.")
 
 
