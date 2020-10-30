@@ -26,6 +26,7 @@ def print_message(message):
         message: str - the message
     """
     print("MESSAGE:" ,  message, "\n")
+    #input("OK")
 
 
 def print_general_results(result, label):
@@ -76,8 +77,9 @@ def get_input(label):
     """
 
     label = "".join(label)
-    print("Current label:"  + label + "\n")
-    print("USER ACTION| Enter number of label:")
+    #print("Current label:"  + label + "\n")
+    #print("USER ACTION| Enter number of label:")
+    print("USER ACTION|"  + label + "\t")
     user_input = input(" ") ##
     return user_input
 
@@ -110,3 +112,4 @@ def print_error_message(message):
         message: str - the error message
     """
     print("ERROR MESSAGE:" ,  message, "\n")
+    input("OK")

@@ -3,7 +3,9 @@ from view import terminal as view
 
 
 def list_employees():
-    view.print_error_message("Not implemented yet.")
+    lista = hr.read_customers_list()
+    view.print_table(lista)
+    input("OK")
 
 
 def add_employee():
@@ -27,15 +29,24 @@ def get_average_age():
 
 
 def next_birthdays():
-    view.print_error_message("Not implemented yet.")
+    given_date = view.get_input("Define the date: (format YYYY-MM-DD, fe. 2020-04-04)")
+    result = hr.employees_birthday(given_date)
+    view.print_message("Employees having birthdays within the two weeks: \n\t" + str(result))
+    input("OK")
 
 
 def count_employees_with_clearance():
-    view.print_error_message("Not implemented yet.")
+    given_clerance = int(view.get_input("Define the minimum clerance: "))
+    result = hr.count_employees_clerance(given_clerance)
+    view.print_message("Employees with at least the given clearance level: \n\t" + str(result))
+    input("OK")
 
 
 def count_employees_per_department():
-    view.print_error_message("Not implemented yet.")
+    result = hr.count_employees_department()
+    view.print_message("Employees per department: \n\t" + str(result))
+    input("OK")
+
 
 
 def run_operation(option):
