@@ -19,12 +19,12 @@ def delete_employee():
 
 
 def get_oldest_and_youngest():
-    view.print_error_message("Not implemented yet.")
+    view.print_message(hr.oldest_youngest_employee())
 
 
 def get_average_age():
     view.print_error_message("Not implemented yet.")
-
+# Mateusz
 
 def next_birthdays():
     view.print_error_message("Not implemented yet.")

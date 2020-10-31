@@ -29,6 +29,7 @@ def delete_transaction(transaction_to_delete):
     del list_of_transaction[int(transaction_to_delete)]
     data_manager.write_table_to_file(DATAFILE,list_of_transaction)
 
+
 def biggest_revenue_transaction():
     biggest_transaction = ["Id", "Customer", "Product", "0", "Date"]
     for transaction in list_of_transaction:
@@ -36,6 +37,7 @@ def biggest_revenue_transaction():
             biggest_transaction = transaction
 
     return biggest_transaction
+
 
 def biggest_revenue_product():
     product_price = {}
@@ -49,6 +51,7 @@ def biggest_revenue_product():
     biggest_product_price = product_price[biggest_product] #dochód za ten produkt
 
     return [biggest_product, biggest_product_price]
+    
     
 def operation_between_transaction(date_1, date_2):
     date_1 = datetime.strptime(date_1, '%Y-%m-%d')

@@ -110,7 +110,7 @@ def get_inputs(labels):
     print("CURRENT LABELS:")
     inputs_list = []
     for label in labels:
-        new_item = input(f'Enter {label}: ')
+        new_item = input(f'{label}: ')
         inputs_list.append(new_item)
     os.system('cls')
     return inputs_list
