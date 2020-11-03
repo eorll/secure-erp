@@ -1,37 +1,52 @@
 from model.sales import sales
 from view import terminal as view
-
+from model.crm import crm
 
 def list_transactions():
-    view.print_table(sales.get_list_transaction())
+    view.print_table(sales.list_of_transaction, sales.HEADERS)
     
 
 def add_transaction():
-    view.print_error_message("Not implemented yet.")
+    view.print_table(crm.list_customers, crm.HEADERS)
+    customer_nr = view.get_input("Enter customer number")
+    new_transaction = view.get_inputs(sales.HEADERS[2:5])
+    sales.add_transaction(new_transaction, customer_nr)
 
 
 def update_transaction():
-    view.print_error_message("Not implemented yet.")
+    view.print_table(sales.list_of_transaction, sales.HEADERS)
+    trancaction_to_update = view.get_input("Enter number of transaction to update: ")
+    view.print_table(crm.list_customers, crm.HEADERS)
+    customer_nr = view.get_input("Enter customer number")
+    updated_transaction = view.get_inputs(sales.HEADERS[2:5])
+    sales.update_transaction(trancaction_to_update, updated_transaction, customer_nr)
 
 
 def delete_transaction():
-    view.print_error_message("Not implemented yet.")
+    view.print_menu("List of transactions: ", sales.list_of_transaction)
+    trancaction_to_delete = view.get_input("number of transaction to delete: ")
+    sales.delete_transaction(trancaction_to_delete)
 
 
 def get_biggest_revenue_transaction():
-    view.print_error_message("Not implemented yet.")
+    view.print_general_results(sales.biggest_revenue_transaction(), "Biggest revenue transaction is: ")
 
 
 def get_biggest_revenue_product():
-    view.print_error_message("Not implemented yet.")
+    view.print_general_results(sales.biggest_revenue_product(), "Biggest revenue product is: ")
 
 
 def count_transactions_between():
-    view.print_error_message("Not implemented yet.")
+    first_date = view.get_input("start date(YYYY-MM-DD): ")
+    snd_date = view.get_input("end date(YYYY-MM-DD): ")
+    view.print_general_results(sales.operation_between_transaction(first_date, snd_date)[0], "Number of transaction between is")
 
 
 def sum_transactions_between():
-    view.print_error_message("Not implemented yet.")
+    first_date = view.get_input("start date(YYYY-MM-DD): ")
+    snd_date = view.get_input("end date(YYYY-MM-DD): ")
+    view.print_general_results(sales.operation_between_transaction(first_date, snd_date)[1], "Sum of transaction between is")
+
 
 
 def run_operation(option):

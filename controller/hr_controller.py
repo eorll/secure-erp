@@ -2,101 +2,56 @@ from model.hr import hr
 from view import terminal as view
 
 
-def list_employees(employees):
-    employees = hr.get_employees()
-    view.print_table(employees)
+def list_employees():
+    lista = hr.read_customers_list()
+    view.print_table(lista,hr.HEADERS)
 
 
-#for index, list_of_employees in enumerate(list_of_employees, start = 1):
-    
-#       print(index,list_of_employees)
-        
-    view.print_error_message("Not implemented yet.")
-    
-   #not ready yet :)
-    
-
-def add_employee(add_emploees, new_employee):
-    add_emloyees = view.get_change_input("Please, enter data of the employee you want to add:")
-    new_employee = hr.get_employees(add_employees)
-    view.print.message("Addinig employee:")
-    view.print_table(new_employee)
-    view.get_input("Please, enter data of the employee you want to add:")
-    view.print_error_message("Not implemented yet.")
+def add_employee():
+    new_employee = view.get_inputs(hr.HEADERS)
+    hr.add_employee(new_employee)
 
 
-def update_employee(empl_id, employee):
-    empl_id = view.get_employee_input("Please, type which employee you wish to update:")
-    employee = hr.get_employees(empl_id)
-    view.print_message("Updating employee:")
-    view.print_table(employee)
-    view.get_input("Please type which employee you wish to update:")
-    
-    
-    view.print_error_message("Not implemented yet.")
+def update_employee():
+    view.print_menu("List of employee: ", hr.list_of_employee)
+    employee_to_update = view.get_input("number of employee to update: ")
+    updated_employee = view.get_inputs(hr.HEADERS)
+    hr.update_employee(employee_to_update, updated_employee)
 
 
-def delete_employee(delete_employees, deleted_employee):
-    delete_employees = view.get_input("Please, enter data of an employee to delete ")
-    deleted_employee = hr.get_employees(delete_employees)
-    view.print_message("Deleting employee:")
-    view.print_table(deleted_employee)
-    view.get_input("Please, enter data of an employee to delete ")
-    view.print_error_message("Not implemented yet.")
-    
+def delete_employee():
+    view.print_menu("List of employee: ", hr.list_of_employee)
+    employee_to_delete = view.get_input("number of employee to delete: ")
+    hr.delete_employee(employee_to_delete)
 
 
 def get_oldest_and_youngest():
-    """
-    birth_date = (%Y, %m, %d)
-    birth_date_year = %Y
-    age_of_employess = hr.get_employees(birth_date(birth_date.year))
-    youngest_employee = min(y)
-    oldest_employee = max(y)
-    
-    today = date.today()
-    y = hr.Today_year - birth_date.year
-    if today.month < birth_date.month or today.month == birth_date.month and today.day < birth_date.day:
-        y -= 1
-        view.print_general_results(y)
-        if y = youngest_employee
-        view.print_general_results("Our youngest employee is:", youngest_employee) 
-        if y = oldest_employee
-        view.print_general_results("Our oldest employee is:", oldest_employee )
-        else:
-            pass"""
-    view.print_error_message("Not implemented yet.")
+    view.print_message(hr.oldest_youngest_employee())
 
 
 def get_average_age():
-    view.print_error_message("Not implemented yet.")
+    current_year = 2020
+    result = hr.employees_average(current_year)
+    view.print_message("The average age of employees is: \n\t" + str(result))
 
 
 def next_birthdays():
-    view.print_error_message("Not implemented yet.")
+    given_date = view.get_input("Define the date: (format YYYY-MM-DD, fe. 2020-04-04)")
+    result = hr.employees_birthday(given_date)
+    view.print_message("Employees having birthdays within the two weeks: \n\t" + str(result))
 
 
-def count_employees_with_clearance(empoyees_with_clearance, number):
-    employees_with_clearance = 0
-    number = int(view.get_input("Enter required clearance level"))
-    for i in range(len(hr.get_employees[i])) <= number:
-        employees_with_clearance += 1
-        view.print_general_results(employees_with_clearance, "Number of employees with clearence")
-    view.print_error_message("Not implemented yet.")
+def count_employees_with_clearance():
+    given_clerance = int(view.get_input("Define the minimum clerance: "))
+    result = hr.count_employees_clerance(given_clerance)
+    view.print_message("Employees with at least the given clearance level: \n\t" + str(result))
 
 
 def count_employees_per_department():
-    employee_department = {"Sales", "Production", "HR"}
-    employee_department = hr.Id_INDEX
-    employee_per_deparment = hr.DATABASE
-    for i in range(len(hr.HR_DATABASE)):
-        if [hr.HR_DATABASE[i][hr.Id_INDEX]]
-        employee_per_deparment[hr.HR_DATABASE[i]][hr.Id_INDEX]] += 1
-        
-        else:
-            employee_per_deparment[hr.HR_DATABASE[i]][hr.Id_INDEX]] = 1
-            view.print_general_results(employees_with_clearance(employee_per_deparment, "Employees per department"))
-    view.print_error_message("Not implemented yet.")
+    result = hr.count_employees_department()
+    #result = "\n\t".join(result)
+    view.print_message("Employees per department: \n\t" + str(result))
+
 
 
 def run_operation(option):

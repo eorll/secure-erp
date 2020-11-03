@@ -3,23 +3,44 @@ from view import terminal as view
 
 
 def list_customers():
-    view.print_error_message("Not implemented yet.")
+    customer_list = crm.read_customers_list()
+    view.print_table(customer_list,crm.HEADERS)
 
 
 def add_customer():
-    view.print_error_message("Not implemented yet.")
+    customer_to_add = view.get_inputs(crm.HEADERS) #pobieranie danych od użytkownika
+    crm.new_customer(customer_to_add)
 
 
 def update_customer():
-    view.print_error_message("Not implemented yet.")
+    list_customers()
+    number_of_line = int(view.get_input("Chose row to update"))
+    view.print_message("You want to update line number " + str(number_of_line))
+    customer_list = crm.read_customers_list()
+    #view.print_table(customer_list[number_of_line-1],crm.HEADERS)
+    view.print_message(customer_list[number_of_line-1])
+    input("OK")
+    customer_to_update = view.get_inputs(crm.HEADERS) #pobieranie danych od użytkownika
+    crm.new_customer(customer_to_update,option=number_of_line)
 
 
 def delete_customer():
-    view.print_error_message("Not implemented yet.")
+    list_customers()
+    number_of_line = int(view.get_input("Chose row to remove"))
+    view.print_message("You want to remove line number " + str(number_of_line))
+    customer_list = crm.read_customers_list()
+    #view.print_table(customer_list[number_of_line-1],crm.HEADERS)
+    view.print_message(customer_list[number_of_line-1])
+    input("OK")
+    customer_to_remove = -int(number_of_line)
+    crm.new_customer([""],option=customer_to_remove)
 
 
 def get_subscribed_emails():
-    view.print_error_message("Not implemented yet.")
+    emails = crm.get_emails()
+    emails = "\n\t".join(emails)
+    view.print_message("Subscriber e-mails: \n\t" + emails)
+    input("OK")
 
 
 def run_operation(option):
