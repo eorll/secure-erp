@@ -50,13 +50,9 @@ def print_general_results(result, label):
             print(f'{key}: {value}')
 
 
-# /--------------------------------\
-# |   id   |   product  |   type   |
-# |--------|------------|----------|
-# |   0    |  Bazooka   | portable |
-# |--------|------------|----------|
-# |   1    | Sidewinder | missile  |
-# \-----------------------------------/
+# -----------------------------------------------------------------------------------------------------------------
+# | NR  |         Id         |      Customer      |      Product       |       Price        |        Date         |
+# -----------------------------------------------------------------------------------------------------------------
 def print_table(table, labels):
     """Prints tabular data like above.
 
@@ -64,31 +60,32 @@ def print_table(table, labels):
         table: list of lists - the table to print out
     """
     # dodaje nagłówki do tabeli
-    row = ''
+    number = 'NR'
+    row = f'|{number:^3}'
     bar = ''
     for i in labels:
-        row += f'|{i:^20}'
+        row += f'|{i:^25}'
     row += ' |'
     for x in range(len(row)):
         bar += '-'
     print(bar)
     print(row)
 
+    number = 1
     # drukuje tabele
     for i in table:
-        row = ''
+        row = f'|{number:^3}'
         bar = ''
         for j in i:
-            row += f'|{j:^20}'
+            row += f'|{j:^25}'
         row += ' |'
+        number += 1
         for x in range(len(row)):
             bar += '-'
         print(bar)
         print(row)
     print(bar)
         
-# print_table([['Jajko',2,3,4,5],[2,2,2245,4,5]])
-
 
 def get_input(label):
     """Gets single string input from the user.
@@ -96,7 +93,7 @@ def get_input(label):
     Args:
         label: str - the label before the user prompt
     """
-    user_input = input(f"Enter {label} ") 
+    user_input = input(f"{label}: ") 
     os.system('cls')
     return user_input
 
@@ -107,10 +104,10 @@ def get_inputs(labels):
     Args:
         labels: list - the list of the labels to be displayed before each prompt
     """
-    print("CURRENT LABELS:")
+    
     inputs_list = []
     for label in labels:
-        new_item = input(f'{label}: ')
+        new_item = input(f'Enter {label}: ')
         inputs_list.append(new_item)
     os.system('cls')
     return inputs_list

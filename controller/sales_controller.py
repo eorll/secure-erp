@@ -1,21 +1,25 @@
 from model.sales import sales
 from view import terminal as view
-
+from model.crm import crm
 
 def list_transactions():
     view.print_table(sales.list_of_transaction, sales.HEADERS)
     
 
 def add_transaction():
-    new_transaction = view.get_inputs(sales.HEADERS)
-    sales.add_transaction(new_transaction)
+    view.print_table(crm.list_customers, crm.HEADERS)
+    customer_nr = view.get_input("Enter customer number")
+    new_transaction = view.get_inputs(sales.HEADERS[2:5])
+    sales.add_transaction(new_transaction, customer_nr)
 
 
 def update_transaction():
-    view.print_menu("List of transactions: ", sales.list_of_transaction)
-    trancaction_to_update = view.get_input("number of transaction to update: ")
-    updated_transaction = view.get_inputs(sales.HEADERS)
-    sales.update_transaction(trancaction_to_update, updated_transaction)
+    view.print_table(sales.list_of_transaction, sales.HEADERS)
+    trancaction_to_update = view.get_input("Enter number of transaction to update: ")
+    view.print_table(crm.list_customers, crm.HEADERS)
+    customer_nr = view.get_input("Enter customer number")
+    updated_transaction = view.get_inputs(sales.HEADERS[2:5])
+    sales.update_transaction(trancaction_to_update, updated_transaction, customer_nr)
 
 
 def delete_transaction():

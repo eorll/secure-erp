@@ -7,7 +7,7 @@ Data table structure:
     - price (float)
     - transaction date (string): in ISO 8601 format (like 1989-03-21)
 """
-
+from model.crm import crm
 from model import data_manager, util
 from datetime import datetime
 DATAFILE = "model/sales/sales.csv"
@@ -15,13 +15,21 @@ HEADERS = ["Id", "Customer", "Product", "Price", "Date"]
 
 list_of_transaction = data_manager.read_table_from_file(DATAFILE)
 
-def add_transaction(new_transaction):
-    list_of_transaction.append(new_transaction)
+def add_transaction(new_transaction, customer_nr):
+    # adding transaction id
+    new_transaction_final = [util.generate_id()]      
+    # adding customer id
+    new_transaction_final.extend([crm.list_customers[int(customer_nr) - 1][0]])  
+    new_transaction_final.extend(new_transaction)
+    list_of_transaction.append(new_transaction_final)
     data_manager.write_table_to_file(DATAFILE,list_of_transaction)
 
 
-def update_transaction(transaction_nr, updated_transaction):
-    list_of_transaction[int(transaction_nr)] = updated_transaction
+def update_transaction(transaction_nr, updated_transaction, customer_nr):
+    updated_transaction_final = [util.generate_id()]      
+    updated_transaction_final.extend([crm.list_customers[int(customer_nr) - 1][0]])  
+    updated_transaction_final.extend(updated_transaction)
+    list_of_transaction[int(transaction_nr) - 1] = updated_transaction_final
     data_manager.write_table_to_file(DATAFILE,list_of_transaction)
 
 
