@@ -8,49 +8,57 @@ def list_employees():
 
 
 def add_employee():
-    new_employee = view.get_inputs(hr.HEADERS)
+    new_employee = view.get_inputs(hr.HEADERS[1:]) 
     hr.add_employee(new_employee)
+    view.get_input("Employee added. Press enter")
 
 
 def update_employee():
     view.print_menu("List of employee: ", hr.list_of_employee)
     employee_to_update = view.get_input("number of employee to update: ")
-    updated_employee = view.get_inputs(hr.HEADERS)
+    updated_employee = view.get_inputs(hr.HEADERS[1:]) 
     hr.update_employee(employee_to_update, updated_employee)
+    view.get_input("Employee updated. Press enter")
 
 
 def delete_employee():
     view.print_menu("List of employee: ", hr.list_of_employee)
     employee_to_delete = view.get_input("number of employee to delete: ")
     hr.delete_employee(employee_to_delete)
+    view.get_input("Employee deleted. Press enter")
 
 
 def get_oldest_and_youngest():
     view.print_message(hr.oldest_youngest_employee())
+    view.get_input("Press enter to continue")
 
 
 def get_average_age():
     current_year = 2020
     result = hr.employees_average(current_year)
-    view.print_message("The average age of employees is: \n\t" + str(result))
+    view.print_message("The average age of employees is: " + str(result))
+    view.get_input("Press enter to continue")
 
 
 def next_birthdays():
-    given_date = view.get_input("Define the date: (format YYYY-MM-DD, fe. 2020-04-04)")
+    given_date = view.get_input("Define the date: (format YYYY-MM-DD, e.g. 2020-04-04)")
     result = hr.employees_birthday(given_date)
-    view.print_message("Employees having birthdays within the two weeks: \n\t" + str(result))
+    view.print_message("Employees having birthdays within the two weeks: " + str(result))
+    view.get_input("Press enter to continue")
 
 
 def count_employees_with_clearance():
     given_clerance = int(view.get_input("Define the minimum clerance: "))
     result = hr.count_employees_clerance(given_clerance)
-    view.print_message("Employees with at least the given clearance level: \n\t" + str(result))
+    view.print_message("Employees with at least the given clearance level: " + str(result))
+    view.get_input("Press enter to continue")
 
 
 def count_employees_per_department():
     result = hr.count_employees_department()
     #result = "\n\t".join(result)
-    view.print_message("Employees per department: \n\t" + str(result))
+    view.print_message("Employees per department: " + str(result))
+    view.get_input("Press enter to continue")
 
 
 

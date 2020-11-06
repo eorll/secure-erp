@@ -11,11 +11,13 @@ def print_menu(title, list_options):
         title (str): the title of the menu (first row)
         list_options (list): list of the menu options (listed starting from 1, 0th element goes to the end)
     """
-    print(f'{title}')
+    print("\n")
+    print(f'{title.upper()}')
     n = 0
     for option in list_options:
-        print(f"({n}) {option}")
+        print(f"\t({n}) {option}")
         n += 1
+    print("\n")
 
 
 def print_message(message):
@@ -88,6 +90,7 @@ def get_input(label):
     Args:
         label: str - the label before the user prompt
     """
+    label = "".join(label)
     user_input = input(f"{label}: ") 
     os.system('cls')
     return user_input

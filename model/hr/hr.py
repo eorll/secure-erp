@@ -18,11 +18,15 @@ HEADERS = ["Id", "Name", "Date of birth", "Department", "Clearance"]
 list_of_employee = data_manager.read_table_from_file(DATAFILE)
 
 def add_employee(new_employee):
+    newID = util.generate_id() #wygenerowanie ID dla nowego użytkownika
+    new_employee.insert(0,newID) #na pierwsze miejscie w liście new_customer nadpisuje ID
     list_of_employee.append(new_employee)
     data_manager.write_table_to_file(DATAFILE,list_of_employee)
 
 
 def update_employee(employee_nr, updated_employee):
+    newID = util.generate_id() #wygenerowanie ID dla nowego użytkownika
+    updated_employee.insert(0,newID) #na pierwsze miejscie w liście new_customer nadpisuje ID
     list_of_employee[int(employee_nr)] = updated_employee
     data_manager.write_table_to_file(DATAFILE,list_of_employee)
 
@@ -62,6 +66,7 @@ def employees_average(current_year):
         customer_year = int(customer_year[0:4]) #wyodrębnienie roku [RRRR]
         sum_of_years += (current_year - customer_year) #sumowanie wieku kolejnych pracowników
         #input(str(sum_of_years))
+    
     return round((sum_of_years/counter),0)  #średni wiek pracownika (total/ile_osob), round(x,0) - 0miejsc po przecinku
 
 def employees_birthday(given_date):
@@ -75,6 +80,7 @@ def employees_birthday(given_date):
     names = []
 
     list_customers = data_manager.read_table_from_file(DATAFILE, separator=';') #wczytanie listy list z pliku hr.csv
+
     for customer in list_customers: #iterowanie kolejnych list z danymi
         customer_date=customer[2]
         #customer_year = int(customer_date[0:4])
@@ -84,10 +90,13 @@ def employees_birthday(given_date):
         last_date = date(given_year, customer_month,customer_day) #przypisanie do zmiennej, biblioteka date umożliwia operacje na datach
         delta = last_date - first_date #odejmowanie dat
         delta = delta.days #zamiana na ilość dni, typ int
+
         #input(str(delta))
         
         if (delta <= 14 and delta >=0) : # sprawdza czy urodziny kolejnych osób są w ciągu 2 tygodni od podanej daty
             names.append(customer[1]) #spisuje imiona osób, które mają urodziny w przeciągu 2tygodni
+
+    
 
     return names
 

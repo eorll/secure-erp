@@ -14,7 +14,6 @@ DATAFILE = "model/crm/crm.csv"
 HEADERS = ["id", "name", "email", "subscribed"]
 
 
-###dopisane MatLeg
 def read_customers_list(): #odczyt musi być w funkcji aby każdorazowo odczytywał z pliku - bez funkcji odczyta tylko raz na początku programu 
     list_customers = data_manager.read_table_from_file(DATAFILE, separator=';')
     return list_customers
@@ -22,7 +21,7 @@ def read_customers_list(): #odczyt musi być w funkcji aby każdorazowo odczytyw
 
 def new_customer(new_customer,option=0):
     newID = util.generate_id() #wygenerowanie ID dla nowego użytkownika
-    new_customer[0] = newID #na pierwsze miejscie w liście new_customer nadpisuje ID
+    new_customer.insert(0,newID) #na pierwsze miejscie w liście new_customer nadpisuje ID
     list_customers = data_manager.read_table_from_file(DATAFILE, separator=';') #pobranie tego co aktualnie jest w pliku CSV
     if option==0:
         #input("Option" + str(option))
