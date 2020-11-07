@@ -52,7 +52,7 @@ def oldest_youngest_employee():
     return f'The oldest employee is {oldest_emplyee} ({oldest_emplyee_age}) and \
 the youngest is {youngest_emplyee} ({youngest_emplyee_age}).'
 
-def read_customers_list(): #odczyt musi być w funkcji aby każdorazowo odczytywał z pliku - bez funkcji odczyta tylko raz na początku programu 
+def read_customers_list(): #odczyt  
     list_customers = data_manager.read_table_from_file(DATAFILE, separator=';')
     return list_customers
 

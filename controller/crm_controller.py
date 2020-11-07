@@ -10,7 +10,7 @@ def list_customers():
 def add_customer():
     customer_to_add = view.get_inputs(crm.HEADERS[1:]) #pobieranie danych od użytkownika
     crm.new_customer(customer_to_add)
-    view.get_input("Customer added. Press enter")
+    view.get_input("\nCustomer added. Press enter")
 
 
 def update_customer():
@@ -22,7 +22,7 @@ def update_customer():
     view.print_message(customer_list[number_of_line-1])
     customer_to_update = view.get_inputs(crm.HEADERS[1:]) #pobieranie danych od użytkownika
     crm.new_customer(customer_to_update,option=number_of_line)
-    view.get_input("Customer updated. Press enter")
+    view.get_input("\nCustomer updated. Press enter")
 
 
 def delete_customer():
@@ -34,14 +34,14 @@ def delete_customer():
     view.print_message(customer_list[number_of_line-1])
     customer_to_remove = -int(number_of_line)
     crm.new_customer([""],option=customer_to_remove)
-    view.get_input("Customer deleted. Press enter")
+    view.get_input("\nCustomer deleted. Press enter")
 
 
 def get_subscribed_emails():
     emails = crm.get_emails()
     emails = "\n\t".join(emails)
     view.print_message("Subscriber e-mails: \n\t" + emails)
-    view.get_input("Press enter to continue")
+    view.get_input("\nPress enter to continue")
 
 
 def run_operation(option):

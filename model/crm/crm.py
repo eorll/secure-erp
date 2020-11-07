@@ -14,7 +14,7 @@ DATAFILE = "model/crm/crm.csv"
 HEADERS = ["id", "name", "email", "subscribed"]
 
 
-def read_customers_list(): #odczyt musi być w funkcji aby każdorazowo odczytywał z pliku - bez funkcji odczyta tylko raz na początku programu 
+def read_customers_list(): #odczyt 
     list_customers = data_manager.read_table_from_file(DATAFILE, separator=';')
     return list_customers
 #list_customers = data_manager.read_table_from_file(DATAFILE, separator=';')
