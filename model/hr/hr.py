@@ -114,9 +114,9 @@ def count_employees_department():
     list_customers = data_manager.read_table_from_file(DATAFILE, separator=';') #wczytanie listy list z pliku hr.csv
     for customer in list_customers: #iterowanie kolejnych list z danymi
         if customer[3] not in departement_dict: #sprawdza czy dany dział (customer[3]) już wcześniej siępojawił
-            departement_dict[customer[3]] = int(customer[4]) #jeśli nie to tworzy nowy klucz i przypisuje mu wartość z pliku csv customer[4]
+            departement_dict[customer[3]] = 1#int(customer[4]) #jeśli nie to tworzy nowy klucz i przypisuje mu wartość z pliku csv customer[4]
         else:
-            departement_dict[customer[3]] += int(customer[4]) #jeśli dany dział (klucz) już jest w słowniku, to sumuje jego wartość
+            departement_dict[customer[3]] += 1#int(customer[4]) #jeśli dany dział (klucz) już jest w słowniku, to sumuje jego wartość
 
     return departement_dict
 
